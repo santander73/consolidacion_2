@@ -1,0 +1,218 @@
+body {
+    background: linear-gradient(90deg, rgb(244, 244, 245), rgb(218, 217, 217));
+}
+
+.menu {
+    background: linear-gradient(90deg, rgb(244, 244, 245), rgb(218, 217, 217));
+    width: 100%;
+    height: 10vh;
+    padding: 0 5%;
+
+}
+
+.seccion-uno,
+.seccion-dos,
+.seccion-tres {
+    width: 100%;
+    min-height: 90vh;
+    padding: 0 5%;
+}
+
+.seccion-uno .img,
+.seccion-tres .img {
+    width: 380px;
+    height: 300px;
+}
+
+.seccion-uno button {
+    width: 100px;
+}
+
+.image-container {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 360px;
+}
+
+.moving-image {
+    transition: transform 0.3s ease;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.moving-image:hover {
+    transform: scale(1.1);
+}
+
+@media (max-width: 767px) {
+    .image-container {
+        height: auto;
+        aspect-ratio: 16 / 9;
+    }
+}
+
+.seccion-tres .parrafo {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    max-width: 60%;
+    width: 480px;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    z-index: 1000;
+}
+
+.overlay-content {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 90%;
+    max-height: 90%;
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+}
+
+#pdfViewer {
+    width: 100%;
+    height: auto;
+    max-height: 80vh;
+}
+
+#closeCvBtn {
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 10px 15px;
+    border-radius: 50%;
+}
+
+#closeCvBtn:hover {
+    background-color: #d32f2f;
+}
+
+.tecno {
+    width: 100%;
+    min-height: 70vh;
+    padding: 0 5%;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Estilos para el placeholder */
+input::placeholder,
+textarea::placeholder {
+    font-size: 14px;
+    color: #999;
+    opacity: 1; /* Para algunos navegadores */
+    transition: opacity 0.3s ease;
+}
+
+/* Reducir el tamaño del texto placeholder en pantallas pequeñas */
+@media screen and (max-width: 600px) {
+    input::placeholder,
+    textarea::placeholder {
+        font-size: 12px;
+    }
+}
+
+/* Opcional: Ocultar el placeholder al enfocar el campo */
+input:focus::placeholder,
+textarea:focus::placeholder {
+    opacity: 0;
+}
+
+button:hover {
+    background-color: #555;
+}
+/*para contacto*/
+.button {
+    display: block;
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #0d6efd;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+.error {
+    color: red;
+    font-size: 0.8rem;
+    margin-top: 0.2rem;
+}
+
+.hidden {
+    display: none;
+}
+
+#thankYouMessage {
+    text-align: center;
+    background-color: #e8f5e9;
+    padding: 2rem;
+    border-radius: 5px;
+}
+.tech-icon {
+    transition: transform 0.4s ease;
+}
+
+.footer {
+    width: 100%;
+    height: 20vh;
+    padding: 0 5%;
+}
+
+
+
+.pdf-container {
+    position: relative;
+    width: 80%;
+    height: 90%;
+    margin: 2% auto;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: auto;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: #333;
+    cursor: pointer;
+}
+
+#pdfViewer {
+    width: 100%;
+}
