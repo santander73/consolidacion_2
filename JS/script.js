@@ -57,40 +57,44 @@ document.addEventListener('DOMContentLoaded', () => {
 }); */
 
 //CV PDF
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const showCvBtn = document.getElementById('showCvBtn');
     const closeCvBtn = document.getElementById('closeCvBtn');
     const cvOverlay = document.getElementById('cvOverlay');
     const pdfViewer = document.getElementById('pdfViewer');
 
-    // Ruta a tu archivo PDF
-    const pdfUrl = 'https://github.com/santander73/consolidacion_2/blob/master/joseluis.pdf';
-
-    showCvBtn.addEventListener('click', function() {
+    // Ruta corregida a tu archivo PDF
+    const pdfUrl = 'https://github.com/santander73/consolidacion_2/raw/master/joselus.pdf';
+    showCvBtn.addEventListener('click', function () {
         cvOverlay.style.display = 'block';
         document.body.style.overflow = 'hidden'; // Previene el scroll
+        console.log('Mostrando el CV y cargando PDF desde:', pdfUrl);
         loadPdf(pdfUrl);
     });
 
-    closeCvBtn.addEventListener('click', function() {
+    closeCvBtn.addEventListener('click', function () {
         cvOverlay.style.display = 'none';
         document.body.style.overflow = ''; // Restaura el scroll
     });
 
-    cvOverlay.addEventListener('click', function(e) {
+    cvOverlay.addEventListener('click', function (e) {
         if (e.target === cvOverlay) {
             cvOverlay.style.display = 'none';
             document.body.style.overflow = ''; // Restaura el scroll
         }
     });
-    
-    console.log('Intentando cargar PDF desde:', pdfUrl);
 
     function loadPdf(url) {
+        // Verifica si la librería PDF.js está cargada
+        if (typeof pdfjsLib === 'undefined') {
+            console.error('Error: PDF.js no está cargado.');
+            return;
+        }
+
         // Cargamos el PDF usando PDF.js
-        pdfjsLib.getDocument(url).promise.then(function(pdf) {
+        pdfjsLib.getDocument(url).promise.then(function (pdf) {
             // Obtenemos la primera página del PDF
-            pdf.getPage(1).then(function(page) {
+            pdf.getPage(1).then(function (page) {
                 const scale = 1.5;
                 const viewport = page.getViewport({ scale: scale });
 
@@ -104,22 +108,25 @@ document.addEventListener('DOMContentLoaded', function() {
                     viewport: viewport
                 };
                 page.render(renderContext);
+                console.log('PDF renderizado correctamente');
             });
-        }).catch(function(error) {
-            console.error('Error loading PDF:', error);
+        }).catch(function (error) {
+            console.error('Error al cargar el PDF:', error);
             alert('Error al cargar el PDF. Por favor, verifica la ruta del archivo.');
         });
     }
 });
 
 
+
+
 //Contacto
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const form = document.getElementById('contactForm');
     const thankYouMessage = document.getElementById('thankYouMessage');
     const submitterName = document.getElementById('submitterName');
 
-    form.addEventListener('submit', function(e) {
+    form.addEventListener('submit', function (e) {
         e.preventDefault();
         if (validateForm()) {
             // Aquí normalmente enviarías los datos al servidor
@@ -130,7 +137,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function validateForm() {
         let isValid = true;
-        
+
         // Validar nombre
         const name = document.getElementById('name');
         if (name.value.trim() === '') {
@@ -206,23 +213,23 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-function formContacto(){
+function formContacto() {
     let form = document.getElementById("contacto")
     let envDiv = document.getElementById("enviar")
-    if(form.checkValidity()){
+    if (form.checkValidity()) {
         let nombre = documnet.getElementById("inputName").value
         envDiv.innerHTML = "!Gracias por escribir," + nombre + "!Pronto te respondere.";
         envDiv.classList.add("border", "p-1")
     }
 }
 
- //Movimiento imagenes card
+//Movimiento imagenes card
 
-    document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const image = document.querySelector('.moving-image');
     const container = document.querySelector('.image-container');
 
-    container.addEventListener('mousemove', function(e) {
+    container.addEventListener('mousemove', function (e) {
         const { left, top, width, height } = container.getBoundingClientRect();
         const x = (e.clientX - left) / width - 0.5;
         const y = (e.clientY - top) / height - 0.5;
@@ -235,7 +242,7 @@ function formContacto(){
         `;
     });
 
-    container.addEventListener('mouseleave', function() {
+    container.addEventListener('mouseleave', function () {
         image.style.transform = 'scale(1) translate(0, 0) rotateX(0) rotateY(0)';
     });
 });
