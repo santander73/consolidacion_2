@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const pdfViewer = document.getElementById('pdfViewer');
 
     // Ruta a tu archivo PDF
-    const pdfUrl = 'https://github.com/santander73/consolidacion_2/blob/master/joseluis.pdf';
+    const pdfUrl = 'https://github.com/santander73/consolidacion_2/raw/master/joselus.pdf';
 
     showCvBtn.addEventListener('click', function() {
         cvOverlay.style.display = 'block';
