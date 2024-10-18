@@ -12,8 +12,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     function moveIcon(icon) {
-        const randomX = Math.random() * 20 - 10; // Valor entre -10 y 10
-        const randomY = Math.random() * 20 - 10; // Valor entre -10 y 10
+        const randomX = Math.random() * 20 - 10; 
+        const randomY = Math.random() * 20 - 10;
         icon.style.transform = `translate(${randomX}px, ${randomY}px)`;
     }
 
@@ -21,40 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
         icon.style.transform = 'translate(0, 0)';
     }
 });
-//curriculum 
-/* document.addEventListener('DOMContentLoaded', function() {
-    const showCvBtn = document.getElementById('showCvBtn');
-    const closeCvBtn = document.getElementById('closeCvBtn');
-    const cvOverlay = document.getElementById('cvOverlay');
-    const cvImage = document.getElementById('cvImage');
 
-    showCvBtn.addEventListener('click', function() {
-        cvOverlay.style.display = 'block';
-        document.body.style.overflow = 'hidden'; // Previene el scroll
-    });
-
-    closeCvBtn.addEventListener('click', function() {
-        cvOverlay.style.display = 'none';
-        document.body.style.overflow = ''; // Restaura el scroll
-    });
-
-    cvOverlay.addEventListener('click', function(e) {
-        if (e.target === cvOverlay) {
-            cvOverlay.style.display = 'none';
-            document.body.style.overflow = ''; // Restaura el scroll
-        }
-    });
-
-    // Asegura que la imagen del CV se cargue correctamente
-    cvImage.addEventListener('load', function() {
-        console.log('CV image loaded successfully');
-    });
-
-    cvImage.addEventListener('error', function() {
-        console.error('Error loading CV image');
-        alert('Error al cargar la imagen del CV. Por favor, verifica la ruta de la imagen.');
-    });
-}); */
 
 //CV PDF
 document.addEventListener('DOMContentLoaded', function () {
@@ -63,46 +30,41 @@ document.addEventListener('DOMContentLoaded', function () {
     const cvOverlay = document.getElementById('cvOverlay');
     const pdfViewer = document.getElementById('pdfViewer');
 
-    // Ruta corregida a tu archivo PDF
-    const pdfUrl = 'https://github.com/santander73/consolidacion_2/raw/master/joselus.pdf';
+
+    const pdfUrl = 'https://santander73.github.io/consolidacion_2/joselus.pdf';
     showCvBtn.addEventListener('click', function () {
         cvOverlay.style.display = 'block';
-        document.body.style.overflow = 'hidden'; // Previene el scroll
+        document.body.style.overflow = 'hidden';
         console.log('Mostrando el CV y cargando PDF desde:', pdfUrl);
         loadPdf(pdfUrl);
     });
 
     closeCvBtn.addEventListener('click', function () {
         cvOverlay.style.display = 'none';
-        document.body.style.overflow = ''; // Restaura el scroll
+        document.body.style.overflow = '';
     });
 
     cvOverlay.addEventListener('click', function (e) {
         if (e.target === cvOverlay) {
             cvOverlay.style.display = 'none';
-            document.body.style.overflow = ''; // Restaura el scroll
+            document.body.style.overflow = '';
         }
     });
 
     function loadPdf(url) {
-        // Verifica si la librería PDF.js está cargada
         if (typeof pdfjsLib === 'undefined') {
             console.error('Error: PDF.js no está cargado.');
             return;
         }
 
-        // Cargamos el PDF usando PDF.js
         pdfjsLib.getDocument(url).promise.then(function (pdf) {
-            // Obtenemos la primera página del PDF
             pdf.getPage(1).then(function (page) {
                 const scale = 1.5;
                 const viewport = page.getViewport({ scale: scale });
 
-                // Ajustamos el tamaño del canvas al viewport
                 pdfViewer.height = viewport.height;
                 pdfViewer.width = viewport.width;
 
-                // Renderizamos la página en el canvas
                 const renderContext = {
                     canvasContext: pdfViewer.getContext('2d'),
                     viewport: viewport
